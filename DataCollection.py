@@ -25,7 +25,8 @@ prices
 
 
 # In[8]:
-
+input_step_size = 50
+output_size = 100
 
 labels = []
 datas = []
@@ -86,7 +87,7 @@ for i in range(len(prices)-step_size):
 # In[29]:
 
 
-with h5py.File(''.join(['bitcoin2012_2017.h5']), 'w') as f:
+with h5py.File(''.join(['bitcoin2012_2017_50_30.h5']), 'w') as f:
     f.create_dataset("datas", data = datas)
     f.create_dataset('labels', data = labels)
 
