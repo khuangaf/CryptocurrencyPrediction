@@ -84,13 +84,8 @@ validation_datas = validation_datas.reshape(nb_validation_samples, input_step_si
 
 
 model = Sequential()
-model.add(LSTM(10
-    , input_shape=(input_step_size,1),
-    
-    return_sequences=False))
+model.add(LSTM(10, input_shape=(input_step_size,1),return_sequences=False))
 model.add(Dropout(0.2))
-
-
 model.add(Dense(output_size))
 model.add(Activation('sigmoid'))
 model.summary()
