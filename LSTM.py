@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as numpy
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Dense, Dropout, Activation, Flatten,Reshape
 from keras.layers import Conv1D, MaxPooling1D
 from keras.utils import np_utils
 from keras.layers import LSTM
@@ -26,10 +26,11 @@ with h5py.File(''.join(['bitcoin2012_2017_256_16.h5']), 'r') as hf:
     labels = hf['outputs'].value
 
 
-output_file_name='bitcoin2012_2017_256_16_LSTM'
+output_file_name='bitcoin2012_2017_256_16_LSTM_RS'
 
 step_size = datas.shape[1]
-batch_size= 8
+units= 1
+batch_size = 8
 nb_features = datas.shape[2]
 epochs = 100
 output_size=16
@@ -42,9 +43,11 @@ validation_labels = labels[training_size:,:,0]
 
 #build model
 model = Sequential()
-model.add(LSTM(batch_size, input_shape=(step_size,4),return_sequences=False))
+model.add(LSTM(units=units,activation='tanh', input_shape=(step_size,4),return_sequences=True))
 model.add(Dropout(0.2))
+model.add(Reshape((-1,)))
 model.add(Dense(output_size))
+
 model.add(Activation('sigmoid'))
 model.compile(loss='mse', optimizer='adam')
 model.fit(training_datas, training_labels, batch_size=batch_size,validation_data=(validation_datas,validation_labels), epochs = epochs, callbacks=[CSVLogger(output_file_name+'.csv', append=True),ModelCheckpoint('weights/'+output_file_name+'weights-improvement-{epoch:02d}-{val_loss:.5f}.hdf5', monitor='val_loss', verbose=1,mode='min')])
