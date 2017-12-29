@@ -26,10 +26,10 @@ with h5py.File(''.join(['bitcoin2012_2017_256_16.h5']), 'r') as hf:
     labels = hf['outputs'].value
 
 
-output_file_name='bitcoin2012_2017_256_16_LSTM_RS'
+output_file_name='bitcoin2012_2017_256_16_LSTM_RS50'
 
 step_size = datas.shape[1]
-units= 1
+units= 50
 batch_size = 8
 nb_features = datas.shape[2]
 epochs = 100
