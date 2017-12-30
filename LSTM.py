@@ -26,14 +26,16 @@ with h5py.File(''.join(['bitcoin2012_2017_256_16.h5']), 'r') as hf:
     labels = hf['outputs'].value
 
 
-output_file_name='bitcoin2012_2017_256_16_LSTM_RS50'
+
 
 step_size = datas.shape[1]
 units= 50
+second_units = 30
 batch_size = 8
 nb_features = datas.shape[2]
 epochs = 100
 output_size=16
+output_file_name='bitcoin2012_2017_256_16_LSTM_50_30'
 #split training validation
 training_size = int(0.8* datas.shape[0])
 training_datas = datas[:training_size,:]
@@ -44,15 +46,15 @@ validation_labels = labels[training_size:,:,0]
 #build model
 model = Sequential()
 model.add(LSTM(units=units,activation='tanh', input_shape=(step_size,4),return_sequences=True))
+model.add(LSTM(units=second_units,activation='relu',return_sequences=False))
 model.add(Dropout(0.2))
 model.add(Reshape((-1,)))
 model.add(Dense(output_size))
-
 model.add(Activation('sigmoid'))
 model.compile(loss='mse', optimizer='adam')
 model.fit(training_datas, training_labels, batch_size=batch_size,validation_data=(validation_datas,validation_labels), epochs = epochs, callbacks=[CSVLogger(output_file_name+'.csv', append=True),ModelCheckpoint('weights/'+output_file_name+'weights-improvement-{epoch:02d}-{val_loss:.5f}.hdf5', monitor='val_loss', verbose=1,mode='min')])
 
 # model.fit(datas,labels)
-model.save(output_file_name+'.h5')
+#model.save(output_file_name+'.h5')
 
 
