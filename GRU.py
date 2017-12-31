@@ -26,7 +26,7 @@ with h5py.File(''.join(['bitcoin2015to2017_close.h5']), 'r') as hf:
     labels = hf['outputs'].value
 
 
-output_file_name='bitcoin2015to2017_close_CuGRU_1_tanh_relu_'
+output_file_name='bitcoin2015to2017_close_GRU_1_tanh_relu_'
 
 step_size = datas.shape[1]
 units= 50
@@ -43,7 +43,7 @@ validation_labels = labels[training_size:,:,0]
 
 #build model
 model = Sequential()
-model.add(CuDNNGRU(units=units, input_shape=(step_size,nb_features),return_sequences=False))
+model.add(GRU(units=units, input_shape=(step_size,nb_features),return_sequences=False))
 model.add(Activation('tanh'))
 model.add(Dropout(0.2))
 model.add(Dense(output_size))
