@@ -71,5 +71,5 @@ _LSTM with tanh and Leaky ReLu as activation function._
 _3-layered CNN with Leaky ReLu as activation function._
 
 ### Future Work
-Since there is still a gap between training and validation loss, (3.87E-06 vs 2.02E-05), I will be focusing on regularizing the network to decrease the variance.
+Since there is still a gap between training and validation loss, (5.97E-06 vs 3.92E-05), I will be focusing on regularizing the network to decrease the variance.
 

@@ -47,7 +47,7 @@ validation_labels = labels[training_size:,:,0]
 #build model
 model = Sequential()
 model.add(LSTM(units=units,activation='tanh', input_shape=(step_size,nb_features),return_sequences=False))
-model.add(Dropout(0.2))
+model.add(Dropout(0.8))
 model.add(Dense(output_size))
 model.add(LeakyReLU())
 model.compile(loss='mse', optimizer='adam')
