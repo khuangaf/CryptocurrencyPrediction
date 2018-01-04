@@ -21,7 +21,7 @@ config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 set_session(tf.Session(config=config))
 
-with h5py.File(''.join(['bitcoin2015to2017_close.h5']), 'r') as hf:
+with h5py.File(''.join(['data/bitcoin2015to2017_close.h5']), 'r') as hf:
     datas = hf['inputs'].value
     labels = hf['outputs'].value
 
