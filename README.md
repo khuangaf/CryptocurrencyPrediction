@@ -38,6 +38,16 @@ To run this repo, be sure to install the following environment and library:
 1. DataCollection.ipynb
 2. PastSampler.ipynb
 
+### Run
+To run the prediction model, select one of the model. e.g. 
+```
+python CNN.py
+```
+To run iPython file, you need to run jupyter notebook
+```
+jupyter notebook
+```
+
 ### Input & Output & Loss
 The input consists of a list of past Bitcoin data with step size of 256.
 The output is the predicted value of the future data with step size of 16. Note that since the data is ticked every five minutes, the input data spans over the past 1280 minutes, while the output cover the future 80 minutes. The datas are scaled with MinMaxScaler provided by sklearn over the entire dataset. The loss is defined as Mean Square Error (MSE).

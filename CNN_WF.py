@@ -45,7 +45,7 @@ for partition in range(nb_partitions):
     training_labels = labels[partition,:8000*4,:,:]
     validation_labels = labels[partition,8000*4:,:,:]
     early = EarlyStopping(monitor="val_loss", mode="min", patience=10)
-    csvlog = CSVLogger(output_file_name+'.csv', append=True)
+    csvlog = CSVLogger('result/'+output_file_name+'.csv', append=True)
     checkpoint = ModelCheckpoint('weights/'+output_file_name+'partition_'+str(partition)+'.hdf5', monitor='val_loss', verbose=1, save_best_only=True, mode='min')
     cb_list = [early,csvlog,checkpoint]
     print training_datas.shape, validation_datas.shape, training_labels.shape, validation_labels.shape
