@@ -65,7 +65,7 @@ The output is the predicted value of the future data with step size of 16. Note 
 |   LSTM    | 1      | tanh + Leaky ReLU       |    0.00004     | 15364 |
 |   GRU    | 1      | tanh + ReLU       |    0.00004     | 17667 |
 |   GRU    | 1      | tanh + Leaky ReLU       |    0.00004     | 15474 |
-|   Baseline    | -     | -       |    -     | 15364 |
+|   Baseline    | -     | -       |    -     | 19122 |
 
 
 Each row of the above table is the model that derives the best validation loss from the total 100 training epochs. From the above result, we can observe that LeakyReLU always seems to yield better loss compared to regular ReLU. However, 4-layered CNN with Leaky ReLU as activation function creates a large validation loss, this can due to wrong deployment of model which might require re-validation. CNN model can be trained very fast (2 seconds/ epoch with GPU), with slightly worse performance than LSTM and GRU. The best model seems to be LSTM with tanh and Leaky ReLU as activation function, though 3-layered CNN seems to be better in capturing local temporal dependency of data.
