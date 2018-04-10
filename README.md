@@ -93,7 +93,7 @@ _Baseline_
 	<img src="result/bitcoin2015to2017_close_lr.png" width="80%" />
 </div>
 
-_Baseline_
+_Linear Regression_
 
 ## Update
 Regularization has been done, which can be viewed in PlotRegularization.ipynb.
