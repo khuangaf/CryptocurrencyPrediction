@@ -66,7 +66,7 @@ The output is the predicted value of the future data with step size of 16. Note 
 |   GRU    | 1      | tanh + ReLU       |    0.00004     | 17667 |
 |   GRU    | 1      | tanh + Leaky ReLU       |    0.00004     | 15474 |
 |   Baseline (Lag)    | -     | -       |    -     | 19122 |
-|   Baseline (Random Walk)   | -     | -       |    -     | 20179 |
+|   Linear Regression   | -     | -       |    -     | 19789 |
 
 
 
