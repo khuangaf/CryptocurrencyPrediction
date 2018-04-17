@@ -53,7 +53,7 @@ The input consists of a list of past Bitcoin data with step size of 256.
 The output is the predicted value of the future data with step size of 16. Note that since the data is ticked every five minutes, the input data spans over the past 1280 minutes, while the output cover the future 80 minutes. The datas are scaled with MinMaxScaler provided by sklearn over the entire dataset. The loss is defined as Mean Square Error (MSE).
 
 ### Result
-|Model | #Layers  |  Activation    | Validation Loss   |Validation Loss (Scale Inverted) |
+|Model | #Layers  |  Activation    | Validation Loss   |Test Loss (Scale Inverted) |
 |----------| ------------- |------|-------| -----|
 |   CNN    | 2       | ReLU       |    0.00029     | 114308 |
 |   CNN    | 2       | Leaky ReLU       |    0.00029     | 115525 |
