@@ -80,5 +80,3 @@ model.fit(training_datas, training_labels,verbose=1, batch_size=batch_size,valid
 
 # model.fit(datas,labels)
 #model.save(output_file_name+'.h5')
-
-
