@@ -3,3 +3,5 @@
 *.hdf5
 weights/*
 
+.ipynb_checkpoints/*
+.vscode/*
