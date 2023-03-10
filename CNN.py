@@ -7,6 +7,7 @@ from keras.utils import np_utils
 from keras.callbacks import CSVLogger, ModelCheckpoint
 import h5py
 import os
+
 import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 
